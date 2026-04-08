@@ -834,7 +834,7 @@ export default function Home() {
               <h2 className="font-display text-[clamp(48px,7vw,96px)] font-medium">
                 <RevealText>{T.about.h1}</RevealText><br />
                 <span className="outline-text" style={{ WebkitTextStroke: "1.5px #f6f4ef" }}><RevealText delay={0.1}>{T.about.h2}</RevealText></span><br />
-                <RevealText delay={0.2}>{T.about.h3a} </RevealText><em className="italic text-accent inline-block"><RevealText delay={0.3}>{T.about.h3b}</RevealText></em>
+                <RevealText delay={0.2}>{`${T.about.h3a} `}</RevealText><em className="italic text-accent inline-block"><RevealText delay={0.3}>{T.about.h3b}</RevealText></em>
               </h2>
               <p className="text-bg/70 text-lg mt-8 max-w-lg">{T.about.text}</p>
             </motion.div>
@@ -859,7 +859,7 @@ export default function Home() {
             </div>
             <h2 className="font-display text-[clamp(48px,7vw,96px)] font-medium">
               <RevealText>{T.process.h1}</RevealText><br />
-              <RevealText delay={0.1}>{T.process.h2} </RevealText><em className="italic gradient-text inline-block pr-[0.15em]"><RevealText delay={0.25}>{T.process.h3}</RevealText></em>
+              <RevealText delay={0.1}>{`${T.process.h2} `}</RevealText><em className="italic gradient-text inline-block pr-[0.15em]"><RevealText delay={0.25}>{T.process.h3}</RevealText></em>
             </h2>
           </motion.div>
           <div>
@@ -892,7 +892,7 @@ export default function Home() {
               <span className="w-8 h-px bg-accent" /> {T.faq.eyebrow}
             </div>
             <h2 className="font-display text-[clamp(48px,7vw,96px)] font-medium">
-              <RevealText>{T.faq.h1} </RevealText><em className="italic gradient-text inline-block pr-[0.15em]"><RevealText delay={0.15}>{T.faq.h2}</RevealText></em>
+              <RevealText>{`${T.faq.h1} `}</RevealText><em className="italic gradient-text inline-block pr-[0.15em]"><RevealText delay={0.15}>{T.faq.h2}</RevealText></em>
             </h2>
           </motion.div>
           <div className="max-w-3xl">
@@ -927,7 +927,7 @@ export default function Home() {
             <span className="w-8 h-px bg-accent" /> {T.contact.eyebrow}
           </div>
           <h2 className="font-display text-[clamp(36px,6vw,88px)] max-w-5xl mx-auto mb-8 font-medium leading-[1.15] pb-12 px-2 sm:px-8">
-            <RevealText>{T.contact.h1}</RevealText><br /><RevealText delay={0.1}>{T.contact.h2} </RevealText><em className="italic gradient-text inline-block pr-[0.5em]"><RevealText delay={0.25}>{T.contact.h3}</RevealText></em>
+            <RevealText>{T.contact.h1}</RevealText><br /><RevealText delay={0.1}>{`${T.contact.h2} `}</RevealText><em className="italic gradient-text inline-block pr-[0.5em]"><RevealText delay={0.25}>{T.contact.h3}</RevealText></em>
           </h2>
           <p className="text-fg/70 text-xl mb-12">{T.contact.sub}</p>
           <a href="mailto:contact@brandio-studio.com" className="font-display text-[clamp(28px,5vw,64px)] underline decoration-accent decoration-4 underline-offset-8 italic block my-10 hover:gradient-text transition-all">
