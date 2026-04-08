@@ -19,14 +19,14 @@ const dict = {
   fr: {
     nav: { services: "Services", simulator: "Simulateur", about: "À propos", process: "Process", faq: "FAQ", contact: "Contact", cta: "Démarrer", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu" },
     hero: {
-      statuses: [
-        "Disponible · 2 places en avril 2026",
-        "En cours · Identité pour une scale-up SaaS",
-        "Nouveau · Refonte d'un site e-commerce",
-        "En cours · Logo & charte pour un cabinet",
-        "Disponible · 1 place en mai 2026",
-        "En cours · Stratégie de marque B2B",
-      ],
+      statusTpl: {
+        avail2: "Disponible · 2 places en {nextMonth}",
+        avail1: "Disponible · 1 place en {nextMonth2}",
+        prog1: "En cours · Identité pour une scale-up SaaS",
+        prog2: "Nouveau · Refonte d'un site e-commerce",
+        prog3: "En cours · Logo & charte pour un cabinet",
+        prog4: "En cours · Stratégie de marque B2B",
+      },
       badge2: "✦ De l'idée à l'identité",
       line1: "Façonnons",
       line2a: "une",
@@ -117,14 +117,14 @@ const dict = {
   en: {
     nav: { services: "Services", simulator: "Estimator", about: "About", process: "Process", faq: "FAQ", contact: "Contact", cta: "Start", openMenu: "Open menu", closeMenu: "Close menu" },
     hero: {
-      statuses: [
-        "Available · 2 spots in April 2026",
-        "In progress · Identity for a SaaS scale-up",
-        "New · E-commerce site redesign",
-        "In progress · Logo & guidelines for a firm",
-        "Available · 1 spot in May 2026",
-        "In progress · B2B brand strategy",
-      ],
+      statusTpl: {
+        avail2: "Available · 2 spots in {nextMonth}",
+        avail1: "Available · 1 spot in {nextMonth2}",
+        prog1: "In progress · Identity for a SaaS scale-up",
+        prog2: "New · E-commerce site redesign",
+        prog3: "In progress · Logo & guidelines for a firm",
+        prog4: "In progress · B2B brand strategy",
+      },
       badge2: "✦ From idea to identity",
       line1: "Crafting",
       line2a: "an",
@@ -215,14 +215,14 @@ const dict = {
   nl: {
     nav: { services: "Diensten", simulator: "Simulator", about: "Over ons", process: "Aanpak", faq: "FAQ", contact: "Contact", cta: "Starten", openMenu: "Menu openen", closeMenu: "Menu sluiten" },
     hero: {
-      statuses: [
-        "Beschikbaar · 2 plekken in april 2026",
-        "Bezig · Identiteit voor een SaaS scale-up",
-        "Nieuw · Redesign van een e-commerce site",
-        "Bezig · Logo & huisstijl voor een kantoor",
-        "Beschikbaar · 1 plek in mei 2026",
-        "Bezig · B2B merkstrategie",
-      ],
+      statusTpl: {
+        avail2: "Beschikbaar · 2 plekken in {nextMonth}",
+        avail1: "Beschikbaar · 1 plek in {nextMonth2}",
+        prog1: "Bezig · Identiteit voor een SaaS scale-up",
+        prog2: "Nieuw · Redesign van een e-commerce site",
+        prog3: "Bezig · Logo & huisstijl voor een kantoor",
+        prog4: "Bezig · B2B merkstrategie",
+      },
       badge2: "✦ Van idee tot identiteit",
       line1: "Wij bouwen",
       line2a: "een",
@@ -568,10 +568,30 @@ export default function Home() {
     if (stored && ["fr", "en", "nl"].includes(stored)) setLang(stored);
   }, []);
 
+  const heroStatuses = (() => {
+    const tpl = dict[lang].hero.statusTpl;
+    const locale = lang === "fr" ? "fr-BE" : lang === "nl" ? "nl-BE" : "en-GB";
+    const fmt = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" });
+    const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+    const now = new Date();
+    const next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const next2 = new Date(now.getFullYear(), now.getMonth() + 2, 1);
+    const m1 = cap(fmt.format(next));
+    const m2 = cap(fmt.format(next2));
+    return [
+      tpl.avail2.replace("{nextMonth}", m1),
+      tpl.prog1,
+      tpl.prog2,
+      tpl.prog3,
+      tpl.avail1.replace("{nextMonth2}", m2),
+      tpl.prog4,
+    ];
+  })();
+
   useEffect(() => {
-    setStatusIdx(Math.floor(Math.random() * dict[lang].hero.statuses.length));
+    setStatusIdx(Math.floor(Math.random() * 6));
     const id = setInterval(() => {
-      setStatusIdx((i) => (i + 1) % dict[lang].hero.statuses.length);
+      setStatusIdx((i) => (i + 1) % 6);
     }, 5000);
     return () => clearInterval(id);
   }, [lang]);
@@ -715,7 +735,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                {T.hero.statuses[statusIdx] ?? T.hero.statuses[0]}
+                {heroStatuses[statusIdx] ?? heroStatuses[0]}
               </motion.span>
             </motion.div>
             <motion.div
