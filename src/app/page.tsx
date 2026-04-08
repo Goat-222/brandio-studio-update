@@ -637,8 +637,8 @@ export default function Home() {
           <div className="inline-flex items-center gap-3 text-accent text-xs uppercase tracking-[0.2em] mb-6 justify-center font-bold">
             <span className="w-8 h-px bg-accent" /> Contact
           </div>
-          <h2 className="font-display text-[clamp(40px,6vw,88px)] max-w-5xl mx-auto mb-8 font-medium leading-[1.15] pb-8 px-8">
-            <RevealText>Prêt à donner vie</RevealText><br /><RevealText delay={0.1}>à votre </RevealText><em className="italic gradient-text inline-block pr-[0.25em]"><RevealText delay={0.25}>marque&nbsp;?</RevealText></em>
+          <h2 className="font-display text-[clamp(36px,6vw,88px)] max-w-5xl mx-auto mb-8 font-medium leading-[1.15] pb-12 px-2 sm:px-8">
+            <RevealText>Prêt à donner vie</RevealText><br /><RevealText delay={0.1}>à votre </RevealText><em className="italic gradient-text inline-block pr-[0.5em]"><RevealText delay={0.25}>marque&nbsp;?</RevealText></em>
           </h2>
           <p className="text-fg/70 text-xl mb-12">Devis gratuit sous 24h.</p>
           <a href="mailto:contact@brandio-studio.com" className="font-display text-[clamp(28px,5vw,64px)] underline decoration-accent decoration-4 underline-offset-8 italic block my-10 hover:gradient-text transition-all">
