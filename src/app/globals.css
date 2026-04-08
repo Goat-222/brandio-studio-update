@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg: #f6f4ef;
+  --color-bg-2: #ffffff;
+  --color-fg: #0a0a0a;
+  --color-muted: #6b6b70;
+  --color-border: rgba(10, 10, 10, 0.12);
+  --color-accent: #ff4d1f;
+  --color-accent-2: #ffb347;
+  --font-display: "Fraunces", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+a, button { cursor: none; }
+
+@media (hover: none), (pointer: coarse) {
+  body, a, button { cursor: auto; }
+}
+
+.font-display { font-family: var(--font-display); letter-spacing: -0.03em; line-height: 0.92; }
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent), #ff8c42);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-fg);
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: 60px;
+  animation: scroll 25s linear infinite;
+  white-space: nowrap;
+  align-items: center;
+}
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+.spin-slow { animation: spin 12s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.service-card { position: relative; overflow: hidden; }
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 77, 31, 0.18), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.service-card:hover::before { opacity: 1; }
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  transform: rotate(-2deg);
+}
+
+.dotted-bg {
+  background-image: radial-gradient(circle, rgba(10,10,10,0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
