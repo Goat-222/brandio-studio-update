@@ -19,7 +19,14 @@ const dict = {
   fr: {
     nav: { services: "Services", simulator: "Simulateur", about: "À propos", process: "Process", faq: "FAQ", contact: "Contact", cta: "Démarrer", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu" },
     hero: {
-      badge1: "Disponible · 2 places en avril 2026",
+      statuses: [
+        "Disponible · 2 places en avril 2026",
+        "En cours · Identité pour une scale-up SaaS",
+        "Nouveau · Refonte d'un site e-commerce",
+        "En cours · Logo & charte pour un cabinet",
+        "Disponible · 1 place en mai 2026",
+        "En cours · Stratégie de marque B2B",
+      ],
       badge2: "✦ De l'idée à l'identité",
       line1: "Façonnons",
       line2a: "une",
@@ -110,7 +117,14 @@ const dict = {
   en: {
     nav: { services: "Services", simulator: "Estimator", about: "About", process: "Process", faq: "FAQ", contact: "Contact", cta: "Start", openMenu: "Open menu", closeMenu: "Close menu" },
     hero: {
-      badge1: "Available · 2 spots in April 2026",
+      statuses: [
+        "Available · 2 spots in April 2026",
+        "In progress · Identity for a SaaS scale-up",
+        "New · E-commerce site redesign",
+        "In progress · Logo & guidelines for a firm",
+        "Available · 1 spot in May 2026",
+        "In progress · B2B brand strategy",
+      ],
       badge2: "✦ From idea to identity",
       line1: "Crafting",
       line2a: "an",
@@ -201,7 +215,14 @@ const dict = {
   nl: {
     nav: { services: "Diensten", simulator: "Simulator", about: "Over ons", process: "Aanpak", faq: "FAQ", contact: "Contact", cta: "Starten", openMenu: "Menu openen", closeMenu: "Menu sluiten" },
     hero: {
-      badge1: "Beschikbaar · 2 plekken in april 2026",
+      statuses: [
+        "Beschikbaar · 2 plekken in april 2026",
+        "Bezig · Identiteit voor een SaaS scale-up",
+        "Nieuw · Redesign van een e-commerce site",
+        "Bezig · Logo & huisstijl voor een kantoor",
+        "Beschikbaar · 1 plek in mei 2026",
+        "Bezig · B2B merkstrategie",
+      ],
       badge2: "✦ Van idee tot identiteit",
       line1: "Wij bouwen",
       line2a: "een",
@@ -533,6 +554,7 @@ function Simulator({ lang }: { lang: Lang }) {
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("fr");
+  const [statusIdx, setStatusIdx] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [navOpen, setNavOpen] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
@@ -545,6 +567,14 @@ export default function Home() {
     const stored = (typeof window !== "undefined" && localStorage.getItem("lang")) as Lang | null;
     if (stored && ["fr", "en", "nl"].includes(stored)) setLang(stored);
   }, []);
+
+  useEffect(() => {
+    setStatusIdx(Math.floor(Math.random() * dict[lang].hero.statuses.length));
+    const id = setInterval(() => {
+      setStatusIdx((i) => (i + 1) % dict[lang].hero.statuses.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [lang]);
 
   useEffect(() => {
     if (typeof document !== "undefined") document.documentElement.lang = lang;
@@ -678,8 +708,15 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="sticker"
             >
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              {T.hero.badge1}
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+              <motion.span
+                key={`${lang}-${statusIdx}`}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                {T.hero.statuses[statusIdx] ?? T.hero.statuses[0]}
+              </motion.span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, rotate: 0 }}
