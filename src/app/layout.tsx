@@ -7,7 +7,7 @@ const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", dis
 
 const SITE_URL = "https://brandio-studio.com";
 const SITE_NAME = "Brandio Studio";
-const DEFAULT_TITLE = "Brandio Studio — Agence de branding, logo & web design à Bruxelles";
+const DEFAULT_TITLE = "Brandio Studio — De l'idée à l'identité · Branding & Web Design Bruxelles";
 const DEFAULT_DESC =
   "Brandio Studio est une agence de branding, création de logo, identité visuelle et web design basée à Bruxelles. Nous façonnons des marques inoubliables pour startups et entreprises en France, Belgique, Suisse, Luxembourg et Canada.";
 
@@ -169,7 +169,7 @@ const jsonLd = {
         "Stratégie de marque",
         "UI/UX design",
       ],
-      slogan: "Nous façonnons des marques inoubliables.",
+      slogan: "De l'idée à l'identité.",
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],

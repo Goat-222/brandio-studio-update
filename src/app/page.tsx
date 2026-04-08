@@ -173,7 +173,7 @@ function Simulator() {
   );
 
   return (
-    <section id="simulator" className="py-32 bg-fg text-bg relative overflow-hidden">
+    <section id="simulator" className="py-20 md:py-32 bg-fg text-bg relative overflow-hidden">
       <div className="absolute inset-0 dotted-bg opacity-15" />
       <div className="max-w-[1320px] mx-auto px-6 sm:px-8 relative">
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-2xl mb-16">
@@ -394,7 +394,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="px-4 py-2 bg-accent text-white rounded-full text-xs font-bold uppercase tracking-wider"
             >
-              ✦ Studio créatif Bruxelles
+              ✦ De l'idée à l'identité
             </motion.div>
           </div>
 
@@ -444,7 +444,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-xl md:text-2xl text-fg/80 max-w-xl"
             >
-              Studio de branding, identité visuelle & web design.<br />Nous créons des marques qui captivent.
+              <span className="italic gradient-text font-semibold">De l'idée à l'identité.</span><br />Studio de branding, identité visuelle & web design basé à Bruxelles.
             </motion.p>
 
             <motion.div
@@ -454,12 +454,12 @@ export default function Home() {
               className="flex gap-3 flex-wrap"
             >
               <Magnetic>
-                <a href="#contact" className="px-8 py-5 bg-fg text-bg rounded-full text-base font-medium hover:bg-accent transition-colors flex items-center gap-3 shadow-[6px_6px_0_0_var(--color-accent)]">
+                <a href="#contact" className="px-6 sm:px-8 py-4 sm:py-5 bg-fg text-bg rounded-full text-base font-medium hover:bg-accent transition-colors flex items-center gap-3 shadow-[6px_6px_0_0_var(--color-accent)]">
                   Devis gratuit <span>→</span>
                 </a>
               </Magnetic>
               <Magnetic>
-                <a href="#services" className="px-8 py-5 border-2 border-fg rounded-full text-base font-medium hover:bg-fg hover:text-bg transition-colors inline-block">
+                <a href="#services" className="px-6 sm:px-8 py-4 sm:py-5 border-2 border-fg rounded-full text-base font-medium hover:bg-fg hover:text-bg transition-colors inline-block">
                   Nos services
                 </a>
               </Magnetic>
@@ -470,7 +470,7 @@ export default function Home() {
 
       {/* Marquee */}
       <div className="bg-fg text-bg py-6 overflow-hidden border-y-2 border-fg -rotate-1 -mx-4">
-        <div className="marquee-track font-display text-5xl md:text-7xl italic font-medium">
+        <div className="marquee-track font-display text-4xl sm:text-5xl md:text-7xl italic font-medium">
           {[...Array(2)].map((_, k) => (
             <div key={k} className="inline-flex gap-16 items-center">
               {["Branding", "Identité", "Web Design", "Stratégie", "IA"].map((w, i) => (
@@ -485,7 +485,7 @@ export default function Home() {
       </div>
 
       {/* Services */}
-      <section id="services" className="py-32 relative">
+      <section id="services" className="py-20 md:py-32 relative">
         <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="flex items-end justify-between flex-wrap gap-8 mb-20">
             <div className="max-w-2xl">
@@ -527,7 +527,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="py-32 bg-fg text-bg relative overflow-hidden">
+      <section id="about" className="py-20 md:py-32 bg-fg text-bg relative overflow-hidden">
         <div className="absolute inset-0 dotted-bg opacity-20" />
         <div className="max-w-[1320px] mx-auto px-5 sm:px-8 relative">
           <div className="grid md:grid-cols-[1.2fr_1fr] gap-20 items-center">
@@ -562,7 +562,7 @@ export default function Home() {
       </section>
 
       {/* Process */}
-      <section id="process" className="py-32">
+      <section id="process" className="py-20 md:py-32">
         <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-2xl mb-20">
             <div className="inline-flex items-center gap-3 text-accent text-xs uppercase tracking-[0.2em] mb-6 font-bold">
@@ -596,7 +596,7 @@ export default function Home() {
       <Simulator />
 
       {/* FAQ */}
-      <section id="faq" className="py-32">
+      <section id="faq" className="py-20 md:py-32">
         <div className="max-w-[1320px] mx-auto px-5 sm:px-8">
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-2xl mb-20">
             <div className="inline-flex items-center gap-3 text-accent text-xs uppercase tracking-[0.2em] mb-6 font-bold">
@@ -631,7 +631,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-40 text-center relative overflow-hidden">
+      <section id="contact" className="py-24 md:py-40 text-center relative overflow-hidden">
         <div className="hero-blob w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ background: "rgba(255,77,31,0.2)" }} />
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-[1320px] mx-auto px-5 sm:px-8 relative">
           <div className="inline-flex items-center gap-3 text-accent text-xs uppercase tracking-[0.2em] mb-6 justify-center font-bold">
@@ -660,7 +660,7 @@ export default function Home() {
               <Image src="/brandio-logo.png" alt="Brandio" width={64} height={64} className="w-16 h-16 object-contain" />
               <span className="font-display text-2xl font-bold">Brandio<span className="text-accent">.</span></span>
             </a>
-            <p className="text-fg/60 max-w-xs">Studio de branding & web design basé à Bruxelles. Nous façonnons des marques inoubliables.</p>
+            <p className="text-fg/60 max-w-xs"><em className="italic">De l'idée à l'identité.</em> Studio de branding & web design basé à Bruxelles.</p>
           </div>
           <div>
             <h4 className="text-xs uppercase tracking-[0.15em] text-fg/50 mb-5 font-bold">Navigation</h4>
